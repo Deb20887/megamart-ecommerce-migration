@@ -1,0 +1,22 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: megamart-eks
+  region: ap-south-1
+
+managedNodeGroups:
+  - name: megamart-ng
+    instanceType: t3.small
+    minSize: 1
+    maxSize: 2
+    desiredCapacity: 1
+    volumeSize: 20
+    privateNetworking: false
+    iam:
+      withAddonPolicies:
+        autoScaler: true
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: []
